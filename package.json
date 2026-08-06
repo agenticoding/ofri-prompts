@@ -4,6 +4,11 @@
   "description": "Prompt template library for the Agentic Coding stack: pi + pi-agenticoding + pi-mcp-adapter + ChunkHound",
   "keywords": ["pi-package", "pi-prompts"],
   "license": "MIT",
+  "homepage": "https://github.com/agenticoding/ofri-prompts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/agenticoding/ofri-prompts.git"
+  },
   "pi": {
     "prompts": ["./prompts"]
   }

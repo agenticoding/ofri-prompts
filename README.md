@@ -6,16 +6,15 @@ Prompt template library for the **Agentic Coding stack** — `pi` + `pi-agentico
 
 | Path | Contents |
 |---|---|
-| `prompts/` | 13 prompt templates (`/commit`, `/pr-review`, `/release-notes`, `/review-worktree`, ...). |
-| `model-groups/` | `model-groups.json` — the model routing policy consumed by `pi-agenticoding`'s `model-group:` frontmatter. |
-| `install.sh` | One-command local setup (symlinks — see [Install](#install)). |
+| `prompts/` | 13 prompt templates (`/commit`, `/pr-review`, `/release-notes`, `/review-worktree`, ...). Loaded by pi as a package. |
+| `model-groups/` | `model-groups.json` — the model routing policy consumed by `pi-agenticoding`'s `model-group:` frontmatter. User-owned config; copied into place once. |
 
 ## Requirements
 
 | Component | Why it's required | Install |
 |---|---|---|
 | pi ≥ 0.83 | runtime; provides the built-in providers listed below (all present since 0.73) | standard |
-| `pi-agenticoding` | model groups (`model-group:` frontmatter), plus notebook/handoff/spawn flows referenced by several templates | clone + symlink into `~/.pi/agent/extensions/` — see [Install](#install) |
+| `pi-agenticoding` | model groups (`model-group:` frontmatter), plus notebook/handoff/spawn flows referenced by several templates | `pi install npm:pi-agenticoding` |
 | `pi-mcp-adapter` | MCP tooling used by the ChunkHound-flavored templates | `pi install npm:pi-mcp-adapter` |
 | `agent-browser` | browser automation referenced by review templates | see its docs |
 | ChunkHound (MCP) | code research used by `/explain-branch`, `/review-worktree` | via `pi-mcp-adapter` |
@@ -23,24 +22,34 @@ Prompt template library for the **Agentic Coding stack** — `pi` + `pi-agentico
 ## Install
 
 ```bash
-# 1. pi-agenticoding extension (required for model-group routing)
-git clone https://github.com/agenticoding/pi-agenticoding.git
-ln -s "$(pwd)/pi-agenticoding" ~/.pi/agent/extensions/pi-agenticoding
+pi install npm:pi-agenticoding
+pi install npm:pi-mcp-adapter
+pi install git:github.com/agenticoding/ofri-prompts
 
-# 2. This repo (prompts + model routing config)
-git clone https://github.com/agenticoding/ofri-prompts.git
-cd ofri-prompts && ./install.sh
+mkdir -p ~/.pi/agent/pi-agenticoding
+cp ~/.pi/agent/git/github.com/agenticoding/ofri-prompts/model-groups/model-groups.json ~/.pi/agent/pi-agenticoding/model-groups.json
 ```
 
-> `pi install git:github.com/agenticoding/pi-agenticoding` is currently blocked by an upstream packaging bug (`"prepare": "husky"` fails when pi runs `npm install --omit=dev`). Use the clone + symlink above until it's fixed.
+The templates install as a pi package; the last two lines place the routing policy where the extension reads it.
 
-`install.sh` symlinks `~/.pi/agent/prompts` → this repo's `prompts/` and `~/.pi/agent/pi-agenticoding/model-groups.json` → this repo's `model-groups/model-groups.json`. It never deletes existing content: existing templates are merged into the repo first, existing files that would be replaced are kept as `*.bak`.
+- **Your own templates:** drop `.md` files into `~/.pi/agent/prompts/` — they load alongside these and **win by name** (your `/commit` beats ours). Upgrades never touch that directory.
+- **Override one of ours:** copy it to `~/.pi/agent/prompts/<name>.md` and edit — it's now yours; upstream updates to that template stop applying.
+- **Upgrade:** `pi update --extensions`, or move to a newer version with `pi install git:github.com/agenticoding/ofri-prompts@v0.1.1` (each release is tagged).
+- **Routing policy updates:** re-run the `cp` line above, or fetch `https://raw.githubusercontent.com/agenticoding/ofri-prompts/main/model-groups/model-groups.json` — the policy is user-owned config, last-writer-wins is fine.
 
-Alternatively, load the prompts as a pi package (prompts only — you still place `model-groups.json` yourself, see [Model routing](#model-routing)):
+### Contributor setup
+
+Want to edit or fork the templates? Use the symlink layout (what the author runs):
 
 ```bash
-pi install git:github.com/agenticoding/ofri-prompts
+git clone https://github.com/agenticoding/ofri-prompts.git ~/agenticoding/ofri-prompts
+
+ln -s ~/agenticoding/ofri-prompts/prompts ~/.pi/agent/prompts
+mkdir -p ~/.pi/agent/pi-agenticoding
+ln -s ~/agenticoding/ofri-prompts/model-groups/model-groups.json ~/.pi/agent/pi-agenticoding/model-groups.json
 ```
+
+Edits apply instantly; updates are `git pull`. Keep personal templates out of the repo's `prompts/` dir (they'd end up in the published package) — put them in a separate directory and register it via the `prompts` setting instead.
 
 ## Providers this build relies on
 
@@ -83,21 +92,19 @@ There are three independent layers. Override the ones that don't match your setu
 
 If no entry in a group is usable on your machine, the routed spawn **errors** — keep at least one provider you have access to in every group you use.
 
-To re-configure for your own providers:
+Edit the copy you placed during install (keep the group names — templates reference them — and keep `"version": 1`):
 
 ```bash
-cp model-groups/model-groups.json ~/.pi/agent/pi-agenticoding/model-groups.json
-# edit: replace provider/model entries per group, keep the group names
-# (templates reference them) and keep "version": 1
+$EDITOR ~/.pi/agent/pi-agenticoding/model-groups.json
 ```
 
 Project-scoped override: `.pi/pi-agenticoding/model-groups.json` (relative to the project root) wins over the global file.
 
 ### 2. Per-template model pins
 
-Some templates pin a specific model in frontmatter — an author preference, e.g. `/commit` → `model: deepseek/deepseek-v4-flash`. To override a pin (or a `model-group:`), shadow the template: copy it to `~/.pi/agent/prompts/<name>.md` with the same filename and edit `model:`, `thinking:`, and/or `model-group:`. Local files in `~/.pi/agent/prompts/` take precedence over package/repo copies (first-wins resolution), so your copy wins.
+Some templates pin a specific model in frontmatter — an author preference, e.g. `/commit` → `model: deepseek/deepseek-v4-flash`. To override a pin (or a `model-group:`), shadow the template: copy it to `~/.pi/agent/prompts/<name>.md` with the same filename and edit `model:`, `thinking:`, and/or `model-group:`. Local files in `~/.pi/agent/prompts/` take precedence over package copies (first-wins resolution), so your copy wins.
 
-> **Don't edit files inside the symlinked `prompts/` if you also `git pull`** — you'll hit merge conflicts. Shadow copies are the conflict-free path.
+> **Contributors:** don't edit files inside the symlinked `prompts/` if you also `git pull` — you'll hit merge conflicts. Shadow copies (above) are the conflict-free path.
 
 ### 3. Providers
 
@@ -107,9 +114,9 @@ Some templates pin a specific model in frontmatter — an author preference, e.g
 
 ## Keeping up to date
 
-- **Maintainer:** edit files in this repo (the symlinked paths apply instantly), then `git push`.
-- **Consumer (clone):** `git pull`.
-- **Consumer (pi package):** re-install or re-pin (`pi install git:github.com/agenticoding/ofri-prompts@<new-ref>`). Note that pi-managed clones under `~/.pi/agent/git/` are reconciled/reset by pi — don't edit templates there; shadow them instead.
+- **Package install (recommended):** `pi update --extensions`, or re-pin to a newer tag (`pi install git:github.com/agenticoding/ofri-prompts@v0.2.0`). Your local templates are never touched.
+- **Contributor (clone + symlink):** `git pull` in the repo.
+- **Author:** edit in the repo (the symlinked paths apply instantly), `git push` — publishing is a normal commit.
 
 ## Security
 
