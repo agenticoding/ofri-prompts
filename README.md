@@ -1,6 +1,6 @@
 # ofri-prompts
 
-Prompt template library for the **Agentic Coding stack** — [pi](https://pi.dev) + [pi-agenticoding](https://github.com/agenticoding/pi-agenticoding) + [pi-mcp-adapter](https://github.com/nicobailon/pi-mcp-adapter) + [ChunkHound](https://chunkhound.ai) + [agent-browser](https://agent-browser.dev). Type `/command-name` in the pi editor to invoke a template.
+Prompt template library for the **[Agentic Coding stack](https://agenticoding.ai)** — [pi](https://pi.dev) + [pi-agenticoding](https://github.com/agenticoding/pi-agenticoding) + [pi-mcp-adapter](https://github.com/nicobailon/pi-mcp-adapter) + [ChunkHound](https://chunkhound.ai) + [agent-browser](https://agent-browser.dev). Type `/command-name` in the pi editor to invoke a template.
 
 ## Install
 
