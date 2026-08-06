@@ -1,0 +1,10 @@
+{
+  "name": "@agenticoding/ofri-prompts",
+  "version": "0.1.0",
+  "description": "Prompt template library for the Agentic Coding stack: pi + pi-agenticoding + pi-mcp-adapter + ChunkHound",
+  "keywords": ["pi-package", "pi-prompts"],
+  "license": "MIT",
+  "pi": {
+    "prompts": ["./prompts"]
+  }
+}
