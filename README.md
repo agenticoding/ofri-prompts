@@ -1,12 +1,12 @@
 # ofri-prompts
 
-Prompt template library for the **Agentic Coding stack** — `pi` + `pi-agenticoding` + `pi-mcp-adapter` + ChunkHound. Type `/name` in the pi editor to invoke a template.
+Prompt template library for the **Agentic Coding stack** — `pi` + `pi-agenticoding` + `pi-mcp-adapter` + ChunkHound. Type `/command-name` in the pi editor to invoke a template.
 
 ## What's inside
 
 | Path | Contents |
 |---|---|
-| `prompts/` | 13 prompt templates (`/commit`, `/pr-review`, `/release-notes`, `/review-worktree`, ...). Flat by design — pi template discovery is non-recursive. |
+| `prompts/` | 13 prompt templates (`/commit`, `/pr-review`, `/release-notes`, `/review-worktree`, ...). |
 | `model-groups/` | `model-groups.json` — the model routing policy consumed by `pi-agenticoding`'s `model-group:` frontmatter. |
 | `install.sh` | One-command local setup (symlinks — see [Install](#install)). |
 
@@ -14,8 +14,8 @@ Prompt template library for the **Agentic Coding stack** — `pi` + `pi-agentico
 
 | Component | Why it's required | Install |
 |---|---|---|
-| pi ≥ 0.83 | runtime; provides the built-in providers listed below | standard |
-| `pi-agenticoding` | model groups (`model-group:` frontmatter), plus notebook/handoff/spawn flows referenced by several templates | `pi install git:github.com/agenticoding/pi-agenticoding` |
+| pi ≥ 0.83 | runtime; provides the built-in providers listed below (all present since 0.73) | standard |
+| `pi-agenticoding` | model groups (`model-group:` frontmatter), plus notebook/handoff/spawn flows referenced by several templates | clone + symlink into `~/.pi/agent/extensions/` — see [Install](#install) |
 | `pi-mcp-adapter` | MCP tooling used by the ChunkHound-flavored templates | `pi install npm:pi-mcp-adapter` |
 | `agent-browser` | browser automation referenced by review templates | see its docs |
 | ChunkHound (MCP) | code research used by `/explain-branch`, `/review-worktree` | via `pi-mcp-adapter` |
@@ -23,9 +23,16 @@ Prompt template library for the **Agentic Coding stack** — `pi` + `pi-agentico
 ## Install
 
 ```bash
+# 1. pi-agenticoding extension (required for model-group routing)
+git clone https://github.com/agenticoding/pi-agenticoding.git
+ln -s "$(pwd)/pi-agenticoding" ~/.pi/agent/extensions/pi-agenticoding
+
+# 2. This repo (prompts + model routing config)
 git clone https://github.com/agenticoding/ofri-prompts.git
 cd ofri-prompts && ./install.sh
 ```
+
+> `pi install git:github.com/agenticoding/pi-agenticoding` is currently blocked by an upstream packaging bug (`"prepare": "husky"` fails when pi runs `npm install --omit=dev`). Use the clone + symlink above until it's fixed.
 
 `install.sh` symlinks `~/.pi/agent/prompts` → this repo's `prompts/` and `~/.pi/agent/pi-agenticoding/model-groups.json` → this repo's `model-groups/model-groups.json`. It never deletes existing content: existing templates are merged into the repo first, existing files that would be replaced are kept as `*.bak`.
 
@@ -37,7 +44,7 @@ pi install git:github.com/agenticoding/ofri-prompts
 
 ## Providers this build relies on
 
-The reference setup routes models through these providers. All but one are **built into pi ≥ 0.83** — nothing to configure beyond authenticating with `/login`. The router skips providers that aren't configured or authenticated on your machine and uses the next usable model in the group, so you only need *one* of them.
+The reference setup routes models through these providers. All but one are **built into pi ≥ 0.73** — nothing to configure beyond authenticating with `/login`. The router skips providers that aren't configured or authenticated on your machine and uses another usable model in the group, so you only need *one* of them.
 
 | Provider | Role in this build | Setup |
 |---|---|---|
@@ -72,7 +79,9 @@ There are three independent layers. Override the ones that don't match your setu
 
 ### 1. Model routing — `model-groups.json`
 
-`model-group:` frontmatter (e.g. `/pr-review`, `/merge-conflicts`, `/debug-tests`) routes to a **group**: an ordered fallback chain of `provider/model` entries with a thinking level. The router picks the first entry that is configured **and** authenticated on your machine; a group with no usable models falls back to your selected model.
+`model-group:` frontmatter (e.g. `/pr-review`, `/merge-conflicts`, `/debug-tests`) routes to a **group**: a set of `provider/model` entries with a thinking level. At spawn time the router picks a usable entry — one that is configured **and** authenticated on your machine (random among the usable ones). Edits to `model-groups.json` are picked up on the next agent run; no restart needed.
+
+If no entry in a group is usable on your machine, the routed spawn **errors** — keep at least one provider you have access to in every group you use.
 
 To re-configure for your own providers:
 
