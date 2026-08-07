@@ -55,20 +55,12 @@ A project-scoped `.pi/pi-agenticoding/model-groups.json` (relative to the projec
 
 ## Providers
 
-Everything except `poolside` is built into pi — authenticate with `pi /login` and you're done. Custom/self-hosted providers go in `~/.pi/agent/models.json` (see pi's `docs/custom-provider.md`); the reference setup defines `poolside` like this — substitute your own key:
+All providers are built into pi — authenticate with `pi /login` and you're done. Poolside Laguna is served through the built-in **Vercel AI Gateway** (`vercel-ai-gateway`), so no custom provider configuration is needed:
 
-```json
-{
-  "providers": {
-    "poolside": {
-      "api": "openai-completions",
-      "baseUrl": "https://inference.poolside.ai/v1",
-      "apiKey": "<your-key>",
-      "models": [{ "id": "poolside/laguna-s-2.1" }]
-    }
-  }
-}
-```
+1. Run `pi /login`, select **Vercel AI Gateway**, and paste your API key (or set `AI_GATEWAY_API_KEY`).
+2. The gateway model catalog ships with pi — `poolside/laguna-s-2.1` and the free tier `poolside/laguna-s-2.1-free` are available as-is.
+
+Custom/self-hosted providers (Ollama, vLLM, proxies) go in `~/.pi/agent/models.json` — see pi's `docs/models.md` and `docs/custom-provider.md`.
 
 ## License
 
