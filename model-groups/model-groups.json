@@ -96,8 +96,13 @@
           "thinkingLevel": "medium"
         },
         {
-          "provider": "opencode",
-          "modelId": "ling-3.0-flash-free",
+          "provider": "vercel-ai-gateway",
+          "modelId": "poolside/laguna-s-2.1",
+          "thinkingLevel": "high"
+        },
+        {
+          "provider": "vercel-ai-gateway",
+          "modelId": "meta/muse-spark-1.2",
           "thinkingLevel": "medium"
         }
       ]
