@@ -1,8 +1,7 @@
 ---
 description: Generate PR artifacts
 readonly: false
-model: deepseek/deepseek-v4-flash
-thinking: high
+model-group: utility
 ---
 Use `git` to find the last merge point with `main`. Followup with ChunkHound research with `vector_source="diff"` to analyze the changes on this branch and explain what was done. Partition changes into logical groups. Think, and explain like you would to a fellow co-worker:
 - Direct and concise

@@ -1,8 +1,7 @@
 ---
 description: Explain the changes in the working tree
 readonly: true
-model: deepseek/deepseek-v4-flash
-thinking: high
+model-group: utility
 ---
 Review the git changes in the working under `cwd`. Focus ONLY on UNCOMITTED changes. IGNORE committed changes, focus ONLY on the current working tree.
 

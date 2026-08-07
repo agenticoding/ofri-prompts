@@ -2,8 +2,7 @@
 description: Review changes and create clean git commits
 argument-hint: "[description of changes]"
 readonly: false
-model: deepseek/deepseek-v4-flash
-thinking: high
+model-group: utility
 ---
 $@
 

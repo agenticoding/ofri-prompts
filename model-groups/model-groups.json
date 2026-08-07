@@ -144,6 +144,20 @@
           "thinkingLevel": "medium"
         }
       ]
+    },
+    "utility": {
+      "models": [
+        {
+          "provider": "openai-codex",
+          "modelId": "gpt-5.6-luna",
+          "thinkingLevel": "high"
+        },
+        {
+          "provider": "deepseek",
+          "modelId": "deepseek-v4-flash",
+          "thinkingLevel": "high"
+        }
+      ]
     }
   }
 }

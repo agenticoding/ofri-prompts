@@ -2,8 +2,7 @@
 description: Update CHANGELOG.md for a production release
 argument-hint: "[VERSION] (e.g. 4.2.0)"
 readonly: false
-model: deepseek/deepseek-v4-flash
-thinking: high
+model-group: utility
 ---
 Update `CHANGELOG.md` only. No tags, commits, pushes, or GitHub releases.
 
