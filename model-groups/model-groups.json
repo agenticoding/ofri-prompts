@@ -4,16 +4,6 @@
     "coder": {
       "models": [
         {
-          "provider": "deepseek",
-          "modelId": "deepseek-v4-flash",
-          "thinkingLevel": "high"
-        },
-        {
-          "provider": "xiaomi-token-plan-sgp",
-          "modelId": "mimo-v2.5-pro",
-          "thinkingLevel": "medium"
-        },
-        {
           "provider": "vercel-ai-gateway",
           "modelId": "poolside/laguna-s-2.1",
           "thinkingLevel": "medium"
@@ -24,14 +14,19 @@
           "thinkingLevel": "high"
         },
         {
-          "provider": "vercel-ai-gateway",
-          "modelId": "thinkingmachines/inkling",
-          "thinkingLevel": "medium"
-        },
-        {
           "provider": "openai-codex",
           "modelId": "gpt-5.6-luna",
           "thinkingLevel": "medium"
+        },
+        {
+          "provider": "vercel-ai-gateway",
+          "modelId": "thinkingmachines/inkling-small",
+          "thinkingLevel": "high"
+        },
+        {
+          "provider": "opencode-go",
+          "modelId": "mimo-v2.5",
+          "thinkingLevel": "high"
         }
       ]
     },
@@ -51,6 +46,11 @@
           "provider": "openai-codex",
           "modelId": "gpt-5.6-luna",
           "thinkingLevel": "xhigh"
+        },
+        {
+          "provider": "deepseek",
+          "modelId": "deepseek-v4-flash",
+          "thinkingLevel": "high"
         }
       ]
     },
@@ -75,6 +75,11 @@
           "provider": "openai-codex",
           "modelId": "gpt-5.6-sol",
           "thinkingLevel": "medium"
+        },
+        {
+          "provider": "opencode-go",
+          "modelId": "ox-alpha-free",
+          "thinkingLevel": "high"
         }
       ]
     },
@@ -84,11 +89,6 @@
           "provider": "openai-codex",
           "modelId": "gpt-5.6-terra",
           "thinkingLevel": "medium"
-        },
-        {
-          "provider": "xiaomi-token-plan-sgp",
-          "modelId": "mimo-v2.5-pro",
-          "thinkingLevel": "high"
         },
         {
           "provider": "opencode-go",
@@ -101,9 +101,19 @@
           "thinkingLevel": "high"
         },
         {
-          "provider": "vercel-ai-gateway",
-          "modelId": "meta/muse-spark-1.2",
+          "provider": "opencode-go",
+          "modelId": "muse-spark-1.2-contributor",
           "thinkingLevel": "medium"
+        },
+        {
+          "provider": "opencode-go",
+          "modelId": "ox-alpha-free",
+          "thinkingLevel": "high"
+        },
+        {
+          "provider": "deepseek",
+          "modelId": "deepseek-v4-flash",
+          "thinkingLevel": "max"
         }
       ]
     },
@@ -142,6 +152,16 @@
           "provider": "vercel-ai-gateway",
           "modelId": "alibaba/qwen3.7-plus",
           "thinkingLevel": "medium"
+        },
+        {
+          "provider": "vercel-ai-gateway",
+          "modelId": "poolside/laguna-s-2.1",
+          "thinkingLevel": "medium"
+        },
+        {
+          "provider": "vercel-ai-gateway",
+          "modelId": "thinkingmachines/inkling-small",
+          "thinkingLevel": "medium"
         }
       ]
     },
@@ -153,8 +173,18 @@
           "thinkingLevel": "high"
         },
         {
-          "provider": "deepseek",
-          "modelId": "deepseek-v4-flash",
+          "provider": "vercel-ai-gateway",
+          "modelId": "poolside/laguna-s-2.1",
+          "thinkingLevel": "medium"
+        },
+        {
+          "provider": "opencode-go",
+          "modelId": "muse-spark-1.2-contributor",
+          "thinkingLevel": "medium"
+        },
+        {
+          "provider": "opencode-go",
+          "modelId": "hy3",
           "thinkingLevel": "high"
         }
       ]
