@@ -4,9 +4,12 @@ argument-hint: "[description of changes]"
 readonly: false
 model-group: utility
 ---
-$@
 
-Review the changes and create atomic commits based on the intended behavior above.
+```
+$@
+```
+
+Review the changes and create atomic commits based on the user described intent above.
 
 PROCESS:
 1. Review all diffs since last commit
