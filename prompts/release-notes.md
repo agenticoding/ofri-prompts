@@ -76,6 +76,8 @@ Keep a Changelog. Omit empty sections.
 
 Bullets: **Bold name** — outcome-first, 1–2 sentences. No SHAs, PR numbers, or file paths.
 
+**Focus on the intent behind the changes, value proposition, and coherent storytelling instead of strict chronological commit compliance.**
+
 Present: candidate table (NEW/FOLD/SKIP), suggested version + rationale, full proposed section.
 
 ## Apply
