@@ -4,11 +4,6 @@
     "coder": {
       "models": [
         {
-          "provider": "vercel-ai-gateway",
-          "modelId": "poolside/laguna-s-2.1",
-          "thinkingLevel": "medium"
-        },
-        {
           "provider": "opencode-go",
           "modelId": "hy3",
           "thinkingLevel": "high"
@@ -19,14 +14,19 @@
           "thinkingLevel": "medium"
         },
         {
-          "provider": "vercel-ai-gateway",
-          "modelId": "thinkingmachines/inkling-small",
-          "thinkingLevel": "high"
-        },
-        {
           "provider": "opencode-go",
           "modelId": "mimo-v2.5",
           "thinkingLevel": "high"
+        },
+        {
+          "provider": "openrouter",
+          "modelId": "poolside/laguna-s-2.1",
+          "thinkingLevel": "medium"
+        },
+        {
+          "provider": "openrouter",
+          "modelId": "thinkingmachines/inkling-small",
+          "thinkingLevel": "medium"
         }
       ]
     },
@@ -48,8 +48,8 @@
           "thinkingLevel": "xhigh"
         },
         {
-          "provider": "deepseek",
-          "modelId": "deepseek-v4-flash",
+          "provider": "openrouter",
+          "modelId": "deepseek/deepseek-v4-flash-vision-exp",
           "thinkingLevel": "high"
         }
       ]
@@ -78,8 +78,8 @@
         },
         {
           "provider": "opencode-go",
-          "modelId": "ox-alpha-free",
-          "thinkingLevel": "high"
+          "modelId": "glm-5.3-flash",
+          "thinkingLevel": "max"
         }
       ]
     },
@@ -96,24 +96,19 @@
           "thinkingLevel": "medium"
         },
         {
-          "provider": "vercel-ai-gateway",
-          "modelId": "poolside/laguna-s-2.1",
-          "thinkingLevel": "high"
-        },
-        {
           "provider": "opencode-go",
           "modelId": "muse-spark-1.2-contributor",
           "thinkingLevel": "medium"
         },
         {
-          "provider": "opencode-go",
-          "modelId": "ox-alpha-free",
-          "thinkingLevel": "high"
-        },
-        {
           "provider": "deepseek",
           "modelId": "deepseek-v4-flash",
           "thinkingLevel": "max"
+        },
+        {
+          "provider": "opencode-go",
+          "modelId": "glm-5.3-flash",
+          "thinkingLevel": "high"
         }
       ]
     },
@@ -125,14 +120,19 @@
           "thinkingLevel": "high"
         },
         {
-          "provider": "vercel-ai-gateway",
-          "modelId": "alibaba/qwen3.7-plus",
-          "thinkingLevel": "medium"
-        },
-        {
           "provider": "deepseek",
           "modelId": "deepseek-v4-flash",
           "thinkingLevel": "max"
+        },
+        {
+          "provider": "opencode-go",
+          "modelId": "glm-5.3-flash",
+          "thinkingLevel": "high"
+        },
+        {
+          "provider": "openrouter",
+          "modelId": "qwen/qwen3.7-plus",
+          "thinkingLevel": "medium"
         }
       ]
     },
@@ -149,17 +149,17 @@
           "thinkingLevel": "high"
         },
         {
-          "provider": "vercel-ai-gateway",
-          "modelId": "alibaba/qwen3.7-plus",
+          "provider": "openrouter",
+          "modelId": "qwen/qwen3.8-flash",
           "thinkingLevel": "medium"
         },
         {
-          "provider": "vercel-ai-gateway",
+          "provider": "openrouter",
           "modelId": "poolside/laguna-s-2.1",
           "thinkingLevel": "medium"
         },
         {
-          "provider": "vercel-ai-gateway",
+          "provider": "openrouter",
           "modelId": "thinkingmachines/inkling-small",
           "thinkingLevel": "medium"
         }
@@ -173,11 +173,6 @@
           "thinkingLevel": "high"
         },
         {
-          "provider": "vercel-ai-gateway",
-          "modelId": "poolside/laguna-s-2.1",
-          "thinkingLevel": "medium"
-        },
-        {
           "provider": "opencode-go",
           "modelId": "muse-spark-1.2-contributor",
           "thinkingLevel": "medium"
@@ -186,6 +181,11 @@
           "provider": "opencode-go",
           "modelId": "hy3",
           "thinkingLevel": "high"
+        },
+        {
+          "provider": "openrouter",
+          "modelId": "poolside/laguna-s-2.1",
+          "thinkingLevel": "medium"
         }
       ]
     }
