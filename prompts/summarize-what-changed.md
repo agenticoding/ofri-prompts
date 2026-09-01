@@ -1,5 +1,5 @@
 ---
-description: Summarize chagnes in current context
+description: Summarize changes in current context
 readonly: true
 ---
 

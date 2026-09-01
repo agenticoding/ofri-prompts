@@ -9,7 +9,7 @@ model-group: utility
 $@
 ```
 
-Review the changes and create atomic commits based on the user described intent above.
+Review the changes and create atomic commits based on the user-described intent above.
 
 PROCESS:
 1. Review all diffs since last commit

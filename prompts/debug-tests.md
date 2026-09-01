@@ -1,6 +1,6 @@
 ---
 description: Debug Tests
-argument-hint: "[tests failure trace]"
+argument-hint: "[test failure trace]"
 readonly: true
 model-group: debugging
 ---
@@ -8,4 +8,4 @@ model-group: debugging
 $@
 `````
 
-The above tests are failing. Find and explain the root cause. Provide your conclusions with supporing facts.
+The above tests are failing. Find and explain the root cause. Provide your conclusions with supporting facts.

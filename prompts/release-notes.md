@@ -42,7 +42,7 @@ Use messages as the narrative index (intent, feature names). Do not dump full pa
 - Unit = user-facing feature/fix, never a commit
 - Fold same-release fixups into the feature; list fixes only for prior-release regressions
 - Skip CI/chore/docs/style/release-bump noise with no user impact
-- When unsure, include
+- When unsure, include it.
 - Dedupe against **all** existing `CHANGELOG.md` sections — skip anything already shipped; fold `[Unreleased]` and matching prerelease sections into this release once
 
 ### Notebook
