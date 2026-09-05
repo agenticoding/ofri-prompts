@@ -27,6 +27,16 @@
           "provider": "openrouter",
           "modelId": "thinkingmachines/inkling-small",
           "thinkingLevel": "medium"
+        },
+        {
+          "provider": "opencode-go",
+          "modelId": "glm-5.3-flash",
+          "thinkingLevel": "high"
+        },
+        {
+          "provider": "openrouter",
+          "modelId": "qwen/qwen3.8-flash",
+          "thinkingLevel": "medium"
         }
       ]
     },
@@ -50,6 +60,11 @@
         {
           "provider": "openrouter",
           "modelId": "deepseek/deepseek-v4-flash-vision-exp",
+          "thinkingLevel": "high"
+        },
+        {
+          "provider": "opencode-go",
+          "modelId": "glm-5.3-flash",
           "thinkingLevel": "high"
         }
       ]
@@ -101,14 +116,19 @@
           "thinkingLevel": "medium"
         },
         {
-          "provider": "deepseek",
-          "modelId": "deepseek-v4-flash",
-          "thinkingLevel": "max"
-        },
-        {
           "provider": "opencode-go",
           "modelId": "glm-5.3-flash",
           "thinkingLevel": "high"
+        },
+        {
+          "provider": "kimi-coding",
+          "modelId": "k3-256k",
+          "thinkingLevel": "high"
+        },
+        {
+          "provider": "deepseek",
+          "modelId": "deepseek-v4-flash-vision-exp",
+          "thinkingLevel": "max"
         }
       ]
     },
@@ -162,6 +182,11 @@
           "provider": "openrouter",
           "modelId": "thinkingmachines/inkling-small",
           "thinkingLevel": "medium"
+        },
+        {
+          "provider": "opencode-go",
+          "modelId": "glm-5.3-flash",
+          "thinkingLevel": "high"
         }
       ]
     },
