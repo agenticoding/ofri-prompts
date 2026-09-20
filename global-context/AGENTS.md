@@ -37,6 +37,7 @@
 - When the user asks for a plan, ALWAYS present the full plan for approval before execution
 - The full What, Why and How MUST ALWAYS be recoverable by reading the code
 - Comments and code MUST ALWAYS follow single source of truth principal. NEVER duplicate information, always reference the single source of truth.
+- Read GitHub issues, PRs, etc using the `gh` cli
 
 # Browser Automation (`agent-browser`)
 
@@ -56,3 +57,36 @@ Always re-snapshot after any action that changes the page.
 - `snapshot -c` — full page structure, compact
 - `snapshot -s "css-selector" -ic` — scope to a section
 - Returns refs like `@e1`, `@e2` — use these as selectors
+- cd
+
+   /tmp/audiobook-auditions                            
+
+  for
+
+   f 
+
+  in
+
+   01*.mp3 02*.mp3 03*.mp3 04*.mp3 05*.mp3     06*.mp3 07*.mp3 08*.mp3 09b*.mp3 10b*.mp3; 
+
+  do
+
+  echo
+
+  "== 
+
+  $f
+
+  "
+
+  ; afplay 
+
+  "
+
+  $f
+
+  "
+
+  ; 
+
+  done
