@@ -1,22 +1,12 @@
 {
-  "version": 1,
+  "version": 2,
   "groups": {
     "coder": {
       "models": [
         {
-          "provider": "opencode-go",
-          "modelId": "hy3",
-          "thinkingLevel": "high"
-        },
-        {
           "provider": "openai-codex",
           "modelId": "gpt-5.6-luna",
           "thinkingLevel": "medium"
-        },
-        {
-          "provider": "opencode-go",
-          "modelId": "mimo-v2.5",
-          "thinkingLevel": "high"
         },
         {
           "provider": "openrouter",
@@ -37,6 +27,16 @@
           "provider": "openrouter",
           "modelId": "qwen/qwen3.8-flash",
           "thinkingLevel": "medium"
+        },
+        {
+          "provider": "opencode-go",
+          "modelId": "muse-spark-1.3-contributor",
+          "thinkingLevel": "medium"
+        },
+        {
+          "provider": "opencode-go",
+          "modelId": "deepseek-v4.1-flash",
+          "thinkingLevel": "high"
         }
       ]
     },
@@ -58,24 +58,19 @@
           "thinkingLevel": "xhigh"
         },
         {
-          "provider": "openrouter",
-          "modelId": "deepseek/deepseek-v4-flash-vision-exp",
+          "provider": "opencode-go",
+          "modelId": "glm-5.3-flash",
           "thinkingLevel": "high"
         },
         {
           "provider": "opencode-go",
-          "modelId": "glm-5.3-flash",
+          "modelId": "deepseek-v4.1-flash",
           "thinkingLevel": "high"
         }
       ]
     },
     "architecture/design": {
       "models": [
-        {
-          "provider": "deepseek",
-          "modelId": "deepseek-v4-pro",
-          "thinkingLevel": "high"
-        },
         {
           "provider": "opencode-go",
           "modelId": "qwen3.7-plus",
@@ -95,6 +90,11 @@
           "provider": "opencode-go",
           "modelId": "glm-5.3-flash",
           "thinkingLevel": "max"
+        },
+        {
+          "provider": "opencode-go",
+          "modelId": "deepseek-v4.1-flash",
+          "thinkingLevel": "max"
         }
       ]
     },
@@ -112,11 +112,6 @@
         },
         {
           "provider": "opencode-go",
-          "modelId": "muse-spark-1.2-contributor",
-          "thinkingLevel": "medium"
-        },
-        {
-          "provider": "opencode-go",
           "modelId": "glm-5.3-flash",
           "thinkingLevel": "high"
         },
@@ -126,23 +121,51 @@
           "thinkingLevel": "high"
         },
         {
-          "provider": "deepseek",
-          "modelId": "deepseek-v4-flash-vision-exp",
+          "provider": "opencode-go",
+          "modelId": "muse-spark-1.3-contributor",
+          "thinkingLevel": "high"
+        },
+        {
+          "provider": "opencode-go",
+          "modelId": "deepseek-v4.1-flash",
           "thinkingLevel": "max"
         }
       ]
     },
     "merge-resolution": {
+      "evaluations": [
+        {
+          "key": "modalities",
+          "aggregate": {
+            "common": [
+              "text",
+              "image",
+              "reasoning"
+            ],
+            "supported": [
+              "text",
+              "image",
+              "reasoning"
+            ],
+            "effective": [
+              "text",
+              "image",
+              "reasoning"
+            ]
+          },
+          "effective": [
+            "text",
+            "image",
+            "reasoning"
+          ],
+          "diagnostics": []
+        }
+      ],
       "models": [
         {
           "provider": "openai-codex",
           "modelId": "gpt-5.6-terra",
           "thinkingLevel": "high"
-        },
-        {
-          "provider": "deepseek",
-          "modelId": "deepseek-v4-flash",
-          "thinkingLevel": "max"
         },
         {
           "provider": "opencode-go",
@@ -153,16 +176,42 @@
           "provider": "openrouter",
           "modelId": "qwen/qwen3.7-plus",
           "thinkingLevel": "medium"
+        },
+        {
+          "provider": "deepseek",
+          "modelId": "deepseek-flash",
+          "thinkingLevel": "high"
         }
       ]
     },
     "debugging": {
-      "models": [
+      "evaluations": [
         {
-          "provider": "deepseek",
-          "modelId": "deepseek-v4-flash",
-          "thinkingLevel": "max"
-        },
+          "key": "modalities",
+          "aggregate": {
+            "common": [
+              "text",
+              "reasoning"
+            ],
+            "supported": [
+              "text",
+              "image",
+              "reasoning"
+            ],
+            "effective": [
+              "text",
+              "reasoning"
+            ]
+          },
+          "effective": [
+            "text",
+            "image",
+            "reasoning"
+          ],
+          "diagnostics": []
+        }
+      ],
+      "models": [
         {
           "provider": "openai-codex",
           "modelId": "gpt-5.6-terra",
@@ -187,6 +236,11 @@
           "provider": "opencode-go",
           "modelId": "glm-5.3-flash",
           "thinkingLevel": "high"
+        },
+        {
+          "provider": "deepseek",
+          "modelId": "deepseek-flash",
+          "thinkingLevel": "high"
         }
       ]
     },
@@ -199,17 +253,17 @@
         },
         {
           "provider": "opencode-go",
-          "modelId": "muse-spark-1.2-contributor",
-          "thinkingLevel": "medium"
-        },
-        {
-          "provider": "opencode-go",
           "modelId": "hy3",
           "thinkingLevel": "high"
         },
         {
           "provider": "openrouter",
           "modelId": "poolside/laguna-s-2.1",
+          "thinkingLevel": "medium"
+        },
+        {
+          "provider": "opencode-go",
+          "modelId": "muse-spark-1.3-contributor",
           "thinkingLevel": "medium"
         }
       ]
