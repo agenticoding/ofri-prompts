@@ -3,13 +3,7 @@ description: Generate PR artifacts
 readonly: false
 model-group: utility
 ---
-Use `git` to find the last merge point with `main`. Follow up with ChunkHound research with `vector_source="diff"` to analyze the changes on this branch and explain what was done. Partition changes into logical groups. Think and explain like you would to a fellow co-worker:
-- Direct and concise
-- Professional but conversational
-- Assume competence and intelligence
-- Skip obvious explanations
-- Progressive disclosure
-
+Use `git` to find the last merge point with `main`. Follow up with ChunkHound research with `vector_source="diff"` to analyze the changes on this branch and explain what was done. Partition changes into logical groups. Think and explain like you would to a fellow co-worker. Use intuitive language that sharply resonates with the reader. Apply progressive disclosure, problem solution impact like writing style (without naming the nouns explicitly) and avoid all repetitions.
 Search the web, learn how to optimize PR descriptions both for humans and LLMs for efficient grounding. Building upon this, write two markdown files under cwd: one for a human review / maintainer for the project and another complementary that's optimized for the reviewer's agent. Think about:
 - What was removed, added, changed, and the reasoning behind them while keeping the big picture crystal clear
 - Breaking changes, if any exist
