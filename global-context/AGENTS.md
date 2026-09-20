@@ -15,6 +15,7 @@
 - Keep comments short, concise, and token aware.
 - Actively enforce DRY and reusability.
 - Write tests that verify external invariants constraints, and user facing contracts that are socialable and stay robust across refactors. Search the web to find the industry best practices for testing the specific scenario reliably.
+- When writing docs and comments, use an intuitive language that'll sharply resonate with the reader
 
 ## Testing
 
