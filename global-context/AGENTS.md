@@ -57,3 +57,7 @@ Always re-snapshot after any action that changes the page.
 - `snapshot -c` — full page structure, compact
 - `snapshot -s "css-selector" -ic` — scope to a section
 - Returns refs like `@e1`, `@e2` — use these as selectors
+
+### Troubleshooting
+
+If `agent-browser` fails, try upgrading it using `brew` or running `agent-browser install` for fixing the chromium installation.
